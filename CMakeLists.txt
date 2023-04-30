@@ -6,10 +6,7 @@ project(${ROOT_NAME} VERSION 0.1.0)
 option(ENABLE_TEST "Enable google test" ON)
 option(ENABLE_DOCS "Enable doxygen docs" ON)
 
-# just for qt
-set(CMAKE_AUTOUIC ON)
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
+
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -40,13 +37,13 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${${PROJECT_NAME}_ROOT_DIR}/out/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${${PROJECT_NAME}_ROOT_DIR}/out/bin)
 # vendors dir
 set(VENDORS_DIR ${CMAKE_SOURCE_DIR}/src/Vendors)
-set(QRCFILE ${CMAKE_SOURCE_DIR}/resources/resources.qrc)
-set(APP_ICON_RESOURCE_WINDOWS  ${CMAKE_SOURCE_DIR}/resources/appicon.rc)
+
 
 find_package(Qt6 COMPONENTS
         Core
         Gui
         Widgets
+        Quick 
         REQUIRED)
 add_subdirectory(src)
 
@@ -79,4 +76,13 @@ if(DOT_EXE)
   )
 
   set_target_properties(dep-graph PROPERTIES FOLDER Tools)
+endif()
+
+if(TARGET "${PROJECT_NAME}_automoc_json_extraction")
+  set_target_properties(all_qmllint PROPERTIES FOLDER QmlLinter)
+  set_target_properties(all_qmltyperegistrations PROPERTIES FOLDER QmlLinter)
+  set_target_properties(${PROJECT_NAME}_automoc_json_extraction PROPERTIES FOLDER QmlLinter)
+  set_target_properties(${PROJECT_NAME}_qmltyperegistration PROPERTIES FOLDER QmlLinter)
+  set_target_properties(${PROJECT_NAME}_tooling PROPERTIES FOLDER QmlLinter)
+  set_target_properties(${PROJECT_NAME}_qmlimportscan PROPERTIES FOLDER QmlLinter)
 endif()
