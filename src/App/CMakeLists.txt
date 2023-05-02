@@ -8,8 +8,8 @@ file(GLOB_RECURSE HEADER_FILES "*.h")
 file(GLOB_RECURSE SOURCE_FILES "*.cpp")
 file(GLOB_RECURSE UI_FILES "*.ui")
 file(GLOB_RECURSE QML_SRC "*.qml")
-set(QRCFILE ${CMAKE_CURRENT_SOURCE_DIR}/resources/resources.qrc)
-set(APP_ICON_RESOURCE_WINDOWS  ${CMAKE_CURRENT_SOURCE_DIR}/resources/appicon.rc)
+set(QRCFILE ${CMAKE_CURRENT_SOURCE_DIR}/ui/resources.qrc)
+set(APP_ICON_RESOURCE_WINDOWS  ${CMAKE_CURRENT_SOURCE_DIR}/ui/resources/appicon.rc)
 qt6_wrap_ui(UI_HEADERS UI_FILES) 
 
 source_group(TREE "${CMAKE_CURRENT_SOURCE_DIR}" FILES ${HEADER_FILES} ${SOURCE_FILES} ${UI_FILES} ${QML_SRC})
@@ -39,8 +39,6 @@ endforeach()
 qt_add_qml_module(${TARGET_NAME}
   URI /
   VERSION 1.0
-  QML_FILES ${QML_FILE_LIST}
-  # QML_FILES main.qml
   RESOURCE_PREFIX /
 )
 
