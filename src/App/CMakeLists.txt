@@ -28,14 +28,6 @@ target_include_directories(
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
 )
 
-foreach(QML_FILE ${QML_SRC})
-    get_filename_component(QML_FILE_NAME ${QML_FILE} NAME)
-    if(NOT QML_FILE_LIST)
-      set(QML_FILE_LIST "ui/${QML_FILE_NAME}")
-    else()
-      list(APPEND QML_FILE_LIST "ui/${QML_FILE_NAME}")
-    endif()
-endforeach()
 qt_add_qml_module(${TARGET_NAME}
   URI /
   VERSION 1.0
