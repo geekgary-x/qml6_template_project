@@ -1,5 +1,5 @@
 import QtQuick
-
+import "./components"
 Window {
     id: root
     visible: true
