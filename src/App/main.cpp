@@ -6,8 +6,6 @@ int main(int argc, char* argv[])
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
-    const QUrl            url(u"qrc:/main.qml"_qs);
-    engine.load(url);
-
+    engine.load(QUrl(u"qrc:/main.qml"_qs));
     return app.exec();
 }

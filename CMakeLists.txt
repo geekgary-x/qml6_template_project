@@ -77,12 +77,3 @@ if(DOT_EXE)
 
   set_target_properties(dep-graph PROPERTIES FOLDER Tools)
 endif()
-
-if(TARGET "${PROJECT_NAME}_automoc_json_extraction")
-  set_target_properties(all_qmllint PROPERTIES FOLDER QmlLinter)
-  set_target_properties(all_qmltyperegistrations PROPERTIES FOLDER QmlLinter)
-  set_target_properties(${PROJECT_NAME}_automoc_json_extraction PROPERTIES FOLDER QmlLinter)
-  set_target_properties(${PROJECT_NAME}_qmltyperegistration PROPERTIES FOLDER QmlLinter)
-  # set_target_properties(${PROJECT_NAME}_tooling PROPERTIES FOLDER QmlLinter)
-  set_target_properties(${PROJECT_NAME}_qmlimportscan PROPERTIES FOLDER QmlLinter)
-endif()
